@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="testdiv">
+        <!-- <p>this is a <em>p</em></p> -->
+    </div>
+</body>
+</html>
+<script>
+    // document.write('<p>新增一个p标签</p>');
+
+    // window.onload = function(){
+    //     var testdiv = document.getElementById('testdiv');
+    //     alert(testdiv.innerHTML);
+    // }
+
+    // window.onload = function(){
+    //     var para = document.createElement('p');//新建一个p标签
+    //     var info = 'nodeName:';
+    //     info += para.nodeName;
+    //     info += 'nodeType:';
+    //     info += para.nodeType;
+    //     alert(info);
+
+    // }
+
+    var testdiv = document.getElementById('testdiv');
+    var para = document.createElement('p');
+    testdiv.appendChild(para);
+
+    var text = document.createTextNode('hello world');
+    para.appendChild(text);//将新建的文本节点放入p标签中
+
+</script>

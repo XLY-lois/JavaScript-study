@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>picture</title>
+</head>
+<body>
+	<h1>show u some pics</h1>
+	<ul>
+		<li><a href="imgs/01.jpg" onclick="showPic(this);return false;">p1</a></li>
+		<li><a href="imgs/02.jpg" onclick="showPic(this);return false;">p2</a></li>
+		<li><a href="imgs/03.jpg" onclick="showPic(this);return false;">p3</a></li>
+		<li><a href="imgs/04.jpg" onclick="showPic(this);return false;">p3</a></li>
+	</ul>
+	<img src="imgs/01.jpg" alt="" id="placeholder">
+	<script type="text/javascript">
+		function showPic(whichpic){
+			var source = whichpic.getAttribute('href');
+			var placeholder = document.getElementById('placeholder');
+			placeholder.setAttribute('src',source);
+
+		}
+	</script>
+</body>
+</html>

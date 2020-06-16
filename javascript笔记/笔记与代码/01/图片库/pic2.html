@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="imagegallery">
+        <li>
+            <a href="imgs/2_media_screenshots_hanamura-screenshot-001.20Mxx.jpg" onclick="showPic(this); return false;" title="图片1">P1</a>
+        </li>
+        <li>
+            <a href="imgs/2_media_screenshots_hanamura-screenshot-004.0DZyD.jpg" onclick="showPic(this); return false;" title="图片2">P2</a>
+        </li>
+        <li>
+            <a href="imgs/2_media_Wallpapers_Mercy_wallpaper_2048x1536.jpg" onclick="showPic(this); return false;" title="图片3">P3</a>
+        </li>
+    </ul>
+    <p id="description">选择一张图片</p>
+    <img id="placeholder" src="" alt="picture">
+</body>
+</html>
+<script>
+    addLoadEvent(prepareGallery);
+    function prepareGallery(){//检查浏览器是否能理解getElementById等dom方法
+        if(!document.getElementById || !document.getElementsByTagName) return false;
+        var gallery = document.getElementById('imagegallery');
+        var links = gallery.getElementsByTagName('a');
+        for(var i=0; i<links.length; i++){
+            links[i].onlick = function(){
+                showPic(this);
+                return false;
+        }
+    }
+}
+    
+    function showPic(whichpic){
+        var sourse = whichpic.getAttribute('href');
+        var placeholder = document.getElementById('placeholder');
+        placeholder.setAttribute('src',sourse);
+        var text = whichpic.getAttribute('title');
+        var descripiton = document.getElementById('description');
+        descripiton.firstChild.nodeValue = text;
+    }
+</script>
