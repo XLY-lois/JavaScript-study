@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="example" style="color: gray; font-family: Arial, Helvetica, sans-serif;">examplehhhh!</p>
+</body>
+<script>
+    window.onload = function(){
+    var para = document.getElementById('example');
+    // alert(typeof para.nodeName);//string
+    // alert(typeof para.style);//object
+    // alert('the color is '+ para.style.color);
+    // alert('the font is '+ para.style.fontFamily);
+    para.style.color = 'black';
+    }
+</script>
+</html>

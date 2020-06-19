@@ -1,6 +1,7 @@
 body {
     font-family: "Helvetica","Arial",sans-serif;
     font-size: 20pt;
+    background-color: pink;
 }
 abbr {
     text-decoration: none;

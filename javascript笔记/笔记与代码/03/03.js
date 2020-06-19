@@ -33,4 +33,39 @@ function displayAbbr(){
     document.body.appendChild(header);
     document.body.appendChild(dlist);
 }
-window.onload = displayAbbr;
+//用来展示cite的方法
+function displayCite(){
+var quotes = document.getElementsByTagName('blockquote');
+for(var i=0; i<quotes.length; i++){
+    if(!quotes[i].getAttribute('cite')) continue;
+    var url = quotes[i].getAttribute('cite');
+    var quotesChildren = quotes[i].getElementsByTagName('*');
+    var elem = quotesChildren[quotesChildren.length - 1];//quotes所有元素中的最后一个
+
+    //创建a标签 追加到文档中
+    var link = document.createElement('a');
+    var link_text = document.createTextNode('sourse');
+    link.appendChild(link_text);
+    link.setAttribute('href',url);
+    var superscript = document.createElement('sup');
+    superscript.appendChild(link); 
+    elem.appendChild(superscript);
+
+
+    }
+}
+
+function addLoadEvent(func) {
+    var oldonload = window.onload;
+    if(typeof window.onload != 'function'){
+        window.onload = func;
+    }else {
+        window.onload = function () {
+            oldonload();
+            func();
+        }
+    }
+}
+
+addLoadEvent(displayCite);
+addLoadEvent(displayAbbr);
