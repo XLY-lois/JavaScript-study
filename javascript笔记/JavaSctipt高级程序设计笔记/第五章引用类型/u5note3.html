@@ -11,23 +11,121 @@
 
 </body>
 <script>
-    //创建日期对象
-    var now = new Date();
+    // //创建日期对象
+    // var now = new Date();
 
-    var someDate = new Date(Date.parse('May 25,2004'));
-    alert(someDate);
+    // var someDate = new Date(Date.parse('May 25,2004'));
+    // alert(someDate);
 
 
-    var text = 'mom and dad and baby';
-    var pattern = /mom( and dad( and baby)?)?/gi;
+    // var text = 'mom and dad and baby';
+    // var pattern = /mom( and dad( and baby)?)?/gi;
 
-    var matches = pattern.exec(text);
+    // var matches = pattern.exec(text);
 
-    alert(matches.index);//0
-    alert(matches.input);//mom and dad and baby
-    alert(matches[0]);//mom and dad 
-    alert(matches[1]);// and dad 
-    alert(matches[2]);// and baby
+    // alert(matches.index);//0
+    // alert(matches.input);//mom and dad and baby
+    // alert(matches[0]);//mom and dad 
+    // alert(matches[1]);// and dad 
+    // alert(matches[2]);// and baby
+
+    // alert(sum(10,10));
+    // function sum(a,b){
+    //     return a+b;
+    // }//20
+
+
+    // alert(sum(10,10));
+    // var sum = function(a,b){
+    //     return a+b;
+    // }//sum is not a function
+
+
+    //阶乘函数
+    // function factorial(num){
+    //     if(num <= 1){
+    //         return 1;
+    //     }else{
+    //         return num*factorial(num-1);
+    //     }
+    // } 
+
+    // function factorial(num){
+    //  if(num <= 1){
+    //      return 1;
+    //  }else{
+    //      return num*arguments.callee(num-1);
+    //      }
+    //  }
+    //  //用argments.callee 来代替递归时的函数调用 可以使得无论函数名改变成什么 都能完成递归
+    //  var anotherfunc = factorial;
+    //  alert(factorial(3));//6
+    //  alert(anotherfunc(3));//6
+
+
+    // function outer(){
+    //     inner();
+    // }
+
+    // function inner(){
+    //     alert(inner.caller);
+    // }
+
+    // outer();// function outer(){
+    //         //      inner();
+    //         //} inner.caller返回的是调用它的函数
+    //         // 也可以用 arguments.callee.caller 来解耦
+
+    // var o = {
+    //     color:'blue'
+    // }
+
+    // window.color = 'red';
+
+    // function getColor(){
+    //     alert(this.color);
+    // }
+
+    // getColor.call(this);//red
+    // getColor.call(window);//red
+    // getColor.call(o);//blue
+
+
+    // window.color = 'red';
+    // var o = {color:'blue'};
+
+    // function sayColor(){
+    //     alert(this.color);
+    // }
+
+    // var objSayColor = sayColor.bind(o);
+    // objSayColor();//blue 即函数内this指向改成了 对象o
+
+
+
+    var falseObj = new Boolean(false);
+    var result = falseObj && true;
+    alert(result); //true 原因是 falseObj是一个对象 当对象进行逻辑与操作时 会默认转换成true
+    //要区分 基本类型 引用类型的两种布尔值 
+
+
+
+    // var text = 'cat bat sat fat';
+    // var pattern = /.at/;
+
+    // var matches = text.match(pattern);
+    // alert(matches.index);//0
+    // alert(matches[0]);//cat
+    // alert(pattern.lastIndex);//0
+    // console.log(matches);
+
+
+    var text =  'cat bat sat fat';
+    var result = text.replace('at','ond');
+    alert(result);//cond bat sat fat 
+
+    result = text.replace(/at/g,'ond');
+    alert(result);//cond bond sond fond
 </script>
 
 </html>
