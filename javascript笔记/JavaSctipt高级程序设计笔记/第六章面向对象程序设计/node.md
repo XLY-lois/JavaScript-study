@@ -125,3 +125,140 @@ alert(person2.friends);//Shelby,Court
 - 稳妥构建函数模式
 
 ## 继承
+#### 原型链实现继承
+- 原型链 通过原型对象等于另一个类型的实例来实现继承
+```
+//原型链
+function SuperType(){
+    this.prototype = true;
+}
+
+SuperType.prototype.getSuperValue = function(){
+    return this.prototype;
+}
+
+function SubType(){
+    this.subprototype = false;
+}
+//新建一个SuperType的实例以达到Subtype继承SuperType的目的
+SubType.prototype = new SuperType();
+
+//重新将方法写入SubType的原型（SuperTyper实例）中
+SubType.prototype.getSuperValue = function(){
+    return this.subprototype;
+}
+
+var instance = new SubType();
+alert(instance.getSuperValue());//false 书上写的是true？？可是明明已经重写了getSuperValue方法欸
+```
+- 确定原型和实例的关系
+```
+//确定原型和实例的关系
+alert(instance instanceof Object);//true
+alert(instance instanceof SubType);//true
+alert(instance instanceof SuperType);//true
+```
+- 通过原型链实现继承时不能使用对象字面量创建原型方法，因为这样做会重写原型链
+#### 借用构造函数 实现继承
+- 原型链的问题 属性共享的问题  创建子类的实例是不能传参（没办法再不影响对象实例的情况下传参）
+```
+//原型链的问题
+function SuperType(){
+    this.colors = ['red','blue','green'];
+}
+
+
+function SubType(){
+}
+//继承
+SubType.prototype = new SuperType();
+
+var instance1 = new SubType();
+instance1.colors.push('black');
+alert(instance1.colors);//red,blue,green,black
+
+var instance2 = new SubType();
+alert(instance2.colors);//red,blue,green,black 两个实例的colors属性实际上都是来自SubType的原型SuperType的实例
+```
+- 借用构造函数 
+```
+//借用构造函数
+function SuperType(){
+    this.colors = ['red','blue','green'];
+}
+
+function SubType(){
+    //继承
+    //在此处调用父类的构造函数啦
+    SuperType.call(this);
+}
+
+var instance1 = new SubType();
+instance1.colors.push('black');
+alert(instance1.colors);//red,blue,green,black
+
+var instance2 = new SubType();
+alert(instance2.colors);//red,blue,green
+```
+- 传递参数
+```
+//借用构造函数传参
+function SuperType(name){
+    this.name = name;
+}
+
+function Subtype(){
+    //继承SuperType 同时传参
+    SuperType.call(this,'jack');
+    this.age = 19;
+}
+
+var instance = new Subtype();
+alert(instance.name);//jack
+alert(instance.age);//19
+
+```
+   - 由于方法都在构造函数中定义 在外部还是不能传参 没有复用性可言 因此也不会单独使用
+#### 组合继承 （原型链和借用构造函数组合使用）最常用
+```
+//组合继承
+//父类构造函数
+function SuperType(name){
+    this.name = name;
+    this.colors = ['red','blue','yellow'];
+}
+//父类方法定义在他的原型对象中 避免多次创建function对象的现象发生
+SuperType.prototype.sayName = function(){
+    alert(this.name);
+}
+
+//子类继承属性
+function SubType(name,age){
+    //继承父类的属性name
+    SuperType.call(this,name);
+    this.age = age;
+}
+
+//子类继承方法
+SubType.prototype = new SuperType();
+//在子类的实例对象（即父类的实例）中定义新方法
+SubType.prototype.sayAge = function(){
+    alert(this.age);
+}
+
+var person1 = new SubType('rose',18);
+person1.colors.push('black');
+alert(person1.colors);//red,blue,yellow,black
+person1.sayName();//rose
+person1.sayAge();//18
+
+var person2 = new SubType('jack',20);
+person2.colors.push('green');
+alert(person2.colors);//red,blue,yellow,black,green
+person2.sayName();//jack
+person2.sayAge();//20
+```
+   - 总之就是 方法用原型链继承 属性用借用构造函数继承
+#### 原型式继承
+#### 寄生式继承
+#### 寄生组合式继承
