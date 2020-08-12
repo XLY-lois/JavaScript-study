@@ -71,4 +71,26 @@ function addLoadEvent(func) {//页面加载时可同时完成多个函数（可�
     }
 }
 
-addLoadEvent(positionMessage);
+function prepartSlideshow(){
+            //为图片应用样式
+            var preview = document.getElementById('preview');
+            preview.style.position = 'absolute';
+            preview.style.left = '0px';
+            preview.style.top = '0px';
+            //取得列表中所有链接
+            var list = document.getElementById('linklist');
+            var links = list.getElementsByTagName('a');
+            //添加mouseover 事件的动画效果
+            links[0].onmouseover = function(){
+                moveMessage('preview',-100,0,10);
+            }
+            links[1].onmouseover = function(){
+                moveMessage('preview',-200,0,10);
+            }
+            links[2].onmouseover = function(){
+                moveMessage('preview',-300,0,10);
+            }
+            
+        }
+
+addLoadEvent(prepartSlideshow);

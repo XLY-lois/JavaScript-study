@@ -140,33 +140,119 @@
 
 
 
-//模仿块级作用域
-function outputNumber(count){
-    for(var i=0;i<count;i++){
-        alert(i);// 0 1 2 
-    }//在java中 i 在循环结束后就会被销毁 
-    //可是在js中 函数内部还是能访问到i
-    alert(i);//计数 3
-}
-outputNumber(3);
+// //模仿块级作用域
+// function outputNumber(count){
+//     for(var i=0;i<count;i++){
+//         alert(i);// 0 1 2 
+//     }//在java中 i 在循环结束后就会被销毁 
+//     //可是在js中 函数内部还是能访问到i
+//     alert(i);//计数 3
+// }
+// outputNumber(3);
 
-//解决方法1 let关键字
-function outputNumber2(count){
-    for(let i=0;i<count;i++){
-        alert(i);// 0 1 2 
-    }//在java中 i 在循环结束后就会被销毁 
-    //其实只要把var关键字改成let即可 
-    alert(i);// i is not defined
-}
-outputNumber2(3);
+// //解决方法1 let关键字
+// function outputNumber2(count){
+//     for(let i=0;i<count;i++){
+//         alert(i);// 0 1 2 
+//     }//在java中 i 在循环结束后就会被销毁 
+//     //其实只要把var关键字改成let即可 
+//     alert(i);// i is not defined
+// }
+// outputNumber2(3);
 
-//解决方法2 块级作用域（匿名函数立即执行）
-function outputNumber3(count){
-    (function(){
-        for(var i=0;i<count;i++){
-            alert(i);//0 1 2
-        }
-    })();
-    alert(i);// i is not defined
-}
-outputNumber3(3);
+// //解决方法2 块级作用域（匿名函数立即执行）
+// function outputNumber3(count){
+//     (function(){
+//         for(var i=0;i<count;i++){
+//             alert(i);//0 1 2
+//         }
+//     })();
+//     alert(i);// i is not defined
+// }
+// outputNumber3(3);
+
+
+// //私有变量
+// (function(){
+//     var privateVal = 10;//私有变量
+
+//     function privateFunction(){
+//         return false;
+//     }//私有函数
+
+//     //构造函数
+//     MyObj = function(){
+//     }//由于初始化时没声明 这将会是一个全局变量 即在着函数之外是可以访问到的
+
+//     //特权方法 定义在原型对象上
+//     MyObj.prototype.publicMethod = function(){
+//         privateVal++;
+//         return privateFunction();
+//     }
+// })();
+
+// var obj1 = new MyObj();
+// alert(obj1.publicMethod());//false
+// alert(obj1.privateVal);//undefined
+
+// //例子
+// (function(){
+//     var name = '';
+//     Person = function(value){
+//         name = value;
+//     }
+
+//     Person.prototype.getName = function(){
+//         return name;
+//     }
+
+//     Person.prototype.setName = function(value){
+//         name = value;
+//     }
+// })();
+
+// var person1 = new Person('jack');
+// alert(person1.getName());//jack
+// person1.setName('rose');
+// alert(person1.getName());//rose
+
+// var person2 = new Person('tony');
+// alert(person1.getName());//tony 由于name属性是一个静态的共享属性 所以每调用一次就会保存一个新的值
+// alert(person2.getName());//tony 
+
+
+// //模块模式
+// var singleton = function(){
+//     var privateVal = 10;
+//     function privateFunction(){
+//         return false;
+//     }
+//     //特权/公有方法和属性
+//     return {
+//         publicProperty : true,
+//         publicMethod : function(){
+//             privateVal ++ ;
+//             return privateFunction();
+//         }
+//     }
+// }();
+
+// //例子
+// var application = function(){
+//     //私有函数与变量
+//     var components = new Array();
+//     //初始化
+//     components.push(new BaseComponent());
+
+//     //公有
+//     return{
+//         getComponentCount : function(){
+//             return components.length;
+//         },
+//         registerComponent : function(component){
+//             if(typeof component == 'object'){
+//                 components.push(component);
+//             }
+//         }
+//     }
+// }();
