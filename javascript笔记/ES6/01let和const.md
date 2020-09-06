@@ -1,4 +1,33 @@
 # 01
+### 开发环境的搭建
+- 可以用webpack或Babel把es6编译成es5（原因是很多浏览器暂时都不支持es6语法）
+- 在笔记中，转换后的es5代码在dist文件夹中,因此在index.html中要引入的js文件不是index.js，而是./dist/index.js(转换成es5后的js文件)
+### 初始化
+- 终端输入,会生成一些配置文件
+   `npm init -y` 
+- 全局安装bable命令行工具
+   `npm install -g babel-cli`
+- 安装一个es5的什么鬼工具,同时再本地安装下babel-cli（？）
+   `npm install --save-dev babel-preset-es2015 babel-cli`
+- 再根目录下新建一个.babelrc 文件,在里面写配置
+- 命令行中执行打包（或者说是转换）
+   `babel index.js -o dist/index.js`
+   意思是说 将 index.js 输出通过babel输出到 dist/index.js
+   此是会在dist文件夹中生成es5语法的js文件index.js
+   ```
+   "use strict";
+
+   var a = 1;
+   console.log(a);
+   ```
+- 但是每次都输入这么长一串打包好麻烦，所以可以在package.json中修改script中的配置
+   ```
+      "scripts": {
+            "build": "babel index.js -o dist/index.js"
+      },
+   ```
+   在此之后每次打包只要`npm run build` 即可
+
 ### let
 - 用法和var类似，但let只在自己的的代码内有效
 - 存在缓存死区，因此只能在声明之后用。
