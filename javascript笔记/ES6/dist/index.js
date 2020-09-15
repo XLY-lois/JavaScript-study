@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // let [a,b,c] = [0,1,2];//解构赋值
 // console.log(a);
@@ -48,36 +48,96 @@
 // console.log(arr2);//["aaa", "bbb", "ccc"]
 // console.log(arr1);//["aaa", "bbb"]
 
-function test2(first) {
-    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        arg[_key - 1] = arguments[_key];
-    }
+// function test2(first,...arg){
+//     for(let val of arg){//for of 循环
+//         console.log(val);
+//     }
+// }
 
-    // console.log(arg.length);
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+// test2(0,1,2,3,4,5,6,7);//1 2 3 4 5 6 7
 
-    try {
-        for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var val = _step.value;
-            //for of 循环
-            console.log(val);
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
-    }
+
+//04
+// //原始的字符串拼接
+// {
+//     let name = 'lois';
+//     let blog = 'hello ' + name + ' my old friend.';
+//     document.write(blog);
+// }
+// //用字符串模板拼接
+// {
+//     let name = 'jack';
+//     let a = 1;
+//     let b = 2;
+//     let result = `${a+b}`;
+//     let blog = `hello ${name} <br/>im rose`;
+//     document.write(blog + result);//支持运算 html标签等
+// }
+// //原始的字符串查找
+// {
+//     let name = 'lois';
+//     let blog = 'hello lois my sweety';
+//     document.write(blog.indexOf(name)>0);//true
+// }
+// //es6 的字符串查找（是否存在）
+// {
+//     let name = 'lois';
+//     let blog = 'hello lois my sweety';
+//     document.write(`<br/>`+ blog.includes(name));//true
+// }
+// //es6 开头有没有？
+// {
+//     let name = 'lois';
+//     let blog = 'hello lois my sweety';
+//     document.write(`<br/>`+ blog.startsWith(name));//false
+// }
+// //es6 结尾有没有？
+// {
+//     let name = 'lois';
+//     let blog = 'hello lois my sweety';
+//     document.write(`<br/>`+ blog.endsWith(name));//false
+// }
+// //es6 字符串的复制
+// {
+//     document.write(`shuishui`.repeat(3));//shuishui三次
+// }
+
+
+//05
+//声明一个二进制
+var binary = 21; //注意后面的二进制格式是 0Bxxxx 小写的b也可以
+console.log(binary); //21
+//声明一个八进制
+var octal = 438;
+console.log(octal); //438
+//数字判断
+{
+    var a = 11 / 4;
+    console.log(Number.isFinite(a)); //true 判断是否是数字 不管是整数还是浮点型
+    console.log(Number.isFinite('a')); //false
+    console.log(Number.isFinite(NaN)); //false
+    console.log(Number.isFinite(undefined)); //false
 }
-
-test2(0, 1, 2, 3, 4, 5, 6, 7); //7 因为是除了已知参数之外剩下的个数
+//判断 NaN
+{
+    console.log(Number.isNaN(NaN)); //true
+}
+//判断传进的数是不是整数
+{
+    var num = 123.1;
+    console.log(Number.isInteger(num)); //false
+}
+//转换为整型
+{
+    var _num = 123.1;
+    console.log(Number.parseInt(_num)); //123
+}
+//js中的最大整数
+{
+    var max = Math.pow(2, 53) - 1;
+    console.log(max); //9007199254740991
+    //最大最小安全整数常量
+    console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+    console.log(Number.MIN_SAFE_INTEGER); //-9007199254740991
+    console.log(Number.isSafeInteger(max));
+}
