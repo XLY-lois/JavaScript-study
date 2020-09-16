@@ -102,41 +102,41 @@
 
 
 //05
-//声明一个二进制
-let binary = 0B010101;//注意后面的二进制格式是 0Bxxxx 小写的b也可以
-console.log(binary);//21
-//声明一个八进制
-let octal = 0o666;
-console.log(octal);//438
-//数字判断
-{
-    let a = 11/4;
-    console.log(Number.isFinite(a));//true 判断是否是数字 不管是整数还是浮点型
-    console.log(Number.isFinite('a'));//false
-    console.log(Number.isFinite(NaN));//false
-    console.log(Number.isFinite(undefined));//false
-}
-//判断 NaN
-{
-    console.log(Number.isNaN(NaN));//true
-}
-//判断传进的数是不是整数
-{
-    let num = 123.1;
-    console.log(Number.isInteger(num));//false
-}
-//转换为整型
-{
-    let num = 123.1;
-    console.log(Number.parseInt(num));//123
-}
-//js中的最大整数
-{
-    let max = Math.pow(2,53) - 1;
-    console.log(max);//9007199254740991
-    //最大最小安全整数常量
-    console.log(Number.MAX_SAFE_INTEGER);//9007199254740991
-    console.log(Number.MIN_SAFE_INTEGER);//-9007199254740991
-    console.log(Number.isSafeInteger(max));//true
-    console.log(Number.isSafeInteger(max + 1));//false  如果不是安全整数 记得要转换成字符串
-}
+// //声明一个二进制
+// let binary = 0B010101;//注意后面的二进制格式是 0Bxxxx 小写的b也可以
+// console.log(binary);//21
+// //声明一个八进制
+// let octal = 0o666;
+// console.log(octal);//438
+// //数字判断
+// {
+//     let a = 11/4;
+//     console.log(Number.isFinite(a));//true 判断是否是数字 不管是整数还是浮点型
+//     console.log(Number.isFinite('a'));//false
+//     console.log(Number.isFinite(NaN));//false
+//     console.log(Number.isFinite(undefined));//false
+// }
+// //判断 NaN
+// {
+//     console.log(Number.isNaN(NaN));//true
+// }
+// //判断传进的数是不是整数
+// {
+//     let num = 123.1;
+//     console.log(Number.isInteger(num));//false
+// }
+// //转换为整型
+// {
+//     let num = 123.1;
+//     console.log(Number.parseInt(num));//123
+// }
+// //js中的最大整数
+// {
+//     let max = Math.pow(2,53) - 1;
+//     console.log(max);//9007199254740991
+//     //最大最小安全整数常量
+//     console.log(Number.MAX_SAFE_INTEGER);//9007199254740991
+//     console.log(Number.MIN_SAFE_INTEGER);//-9007199254740991
+//     console.log(Number.isSafeInteger(max));//true
+//     console.log(Number.isSafeInteger(max + 1));//false  如果不是安全整数 记得要转换成字符串
+// }
