@@ -31,6 +31,17 @@
     let price = 23.34;
     // . 的含义 除换行外任何字符 因此要转义变成小数点含义
     // d 的含义 \d 表示数值(0-9) 
+    // + 表示要匹配一个或多个这种类型的值
+    console.log(/\d+.\d/.test(price));//true 但不正确 因为 . 在这里的意思是除换行外任何字符
+    console.log(/\d+\.\d/.test(price));//true 依然为真 但此时 . 经过转义，此时含义为小数点
+    //在对象里面又不一样了
+    let reg = new RegExp('\d+\.\d+');
+    console.log(reg.test(price));//false 
+    //以上原因是因为 在字符串里面 '/d' == 'd';是为真的 因为上一个正则规则表示匹配一个或多个d中间放任何字符
+    console.log(reg.test('dddddd@dddd'));//true
+    //因此为了让正则表达式reg正确 需要再转义（再加斜杠）
+    let reg1 = new RegExp('\\d+\\.\\d+');
+    console.log(reg1.test(price));//true
 </script>
 </body>
 </html>
