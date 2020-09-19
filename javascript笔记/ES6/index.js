@@ -140,3 +140,16 @@
 //     console.log(Number.isSafeInteger(max));//true
 //     console.log(Number.isSafeInteger(max + 1));//false  如果不是安全整数 记得要转换成字符串
 // }
+
+//es5 的加法函数
+function add(a,b){
+    return a+b;
+}
+console.log(add(1,2));//3
+console.log(add.length);//2 es6提供的 可以获得函数所需参数的个数
+//es6
+function add2(a,b=1){ //通过解构赋值 设置参数b的默认值
+    return a+b;
+}
+console.log(add2(1));//2
+console.log(add2.length);//1 原因是只会返回必须输入的参数的个数 不包含有默认值的

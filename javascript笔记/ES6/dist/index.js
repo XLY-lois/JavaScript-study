@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // let [a,b,c] = [0,1,2];//解构赋值
 // console.log(a);
@@ -104,40 +104,56 @@
 
 
 //05
-//声明一个二进制
-var binary = 21; //注意后面的二进制格式是 0Bxxxx 小写的b也可以
-console.log(binary); //21
-//声明一个八进制
-var octal = 438;
-console.log(octal); //438
-//数字判断
-{
-    var a = 11 / 4;
-    console.log(Number.isFinite(a)); //true 判断是否是数字 不管是整数还是浮点型
-    console.log(Number.isFinite('a')); //false
-    console.log(Number.isFinite(NaN)); //false
-    console.log(Number.isFinite(undefined)); //false
+// //声明一个二进制
+// let binary = 0B010101;//注意后面的二进制格式是 0Bxxxx 小写的b也可以
+// console.log(binary);//21
+// //声明一个八进制
+// let octal = 0o666;
+// console.log(octal);//438
+// //数字判断
+// {
+//     let a = 11/4;
+//     console.log(Number.isFinite(a));//true 判断是否是数字 不管是整数还是浮点型
+//     console.log(Number.isFinite('a'));//false
+//     console.log(Number.isFinite(NaN));//false
+//     console.log(Number.isFinite(undefined));//false
+// }
+// //判断 NaN
+// {
+//     console.log(Number.isNaN(NaN));//true
+// }
+// //判断传进的数是不是整数
+// {
+//     let num = 123.1;
+//     console.log(Number.isInteger(num));//false
+// }
+// //转换为整型
+// {
+//     let num = 123.1;
+//     console.log(Number.parseInt(num));//123
+// }
+// //js中的最大整数
+// {
+//     let max = Math.pow(2,53) - 1;
+//     console.log(max);//9007199254740991
+//     //最大最小安全整数常量
+//     console.log(Number.MAX_SAFE_INTEGER);//9007199254740991
+//     console.log(Number.MIN_SAFE_INTEGER);//-9007199254740991
+//     console.log(Number.isSafeInteger(max));//true
+//     console.log(Number.isSafeInteger(max + 1));//false  如果不是安全整数 记得要转换成字符串
+// }
+
+//es5 的加法函数
+function add(a, b) {
+    return a + b;
 }
-//判断 NaN
-{
-    console.log(Number.isNaN(NaN)); //true
+console.log(add(1, 2)); //3
+console.log(add.length); //2 es6提供的 可以获得函数所需参数的个数
+//es6
+function add2(a) {
+    var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    //通过解构赋值 设置参数b的默认值
+    return a + b;
 }
-//判断传进的数是不是整数
-{
-    var num = 123.1;
-    console.log(Number.isInteger(num)); //false
-}
-//转换为整型
-{
-    var _num = 123.1;
-    console.log(Number.parseInt(_num)); //123
-}
-//js中的最大整数
-{
-    var max = Math.pow(2, 53) - 1;
-    console.log(max); //9007199254740991
-    //最大最小安全整数常量
-    console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
-    console.log(Number.MIN_SAFE_INTEGER); //-9007199254740991
-    console.log(Number.isSafeInteger(max));
-}
+console.log(add2(1)); //3
+console.log(add2.length); //2

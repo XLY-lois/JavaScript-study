@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //es5 的加法函数
+    function add(a,b){
+        return a+b;
+    }
+    console.log(add(1,2));//3
+    console.log(add.length);//2 es6提供的 可以获得函数所需参数的个数
+    //es6
+    function add2(a,b=1){ //通过解构赋值 设置参数b的默认值
+        return a+b;
+    }
+    console.log(add2(1));//2
+    console.log(add2.length);//1 原因是只会返回必须输入的参数的个数 不包含有默认值的
+
+    //箭头函数 加法
+    var add3 = (a,b) => a+b;//注意此处不需要return 加了会报错
+    var add4 = (a,b) => {//此时有花括号 所以需要return
+        return a+b;
+    }
+    console.log(add3(2,3));//5
+    console.log(add4(2,4));//6
+
+</script>    
+</body>
+</html>
