@@ -21,6 +21,18 @@ header {
     border-style: solid;
     border-bottom-width: 0;
 }
+#about header {
+    background-image: url(../images/head1.jpg);
+}
+#photos header {
+    background-image: url(../images/head2.jpg);
+}
+#live header {
+    background-image: url(../images/head1.jpg);
+}
+#contact header {
+    background-image: url(../images/head2.jpg);
+}
 header nav {
     border-width: .1em;
     border-style: solid;
