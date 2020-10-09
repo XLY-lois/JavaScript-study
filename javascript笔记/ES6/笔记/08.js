@@ -33,6 +33,6 @@ let obj4 = {
 let obj5 = {
     name:'jack'
 }
-console.log(Object.is(obj4.name,obj5.name));
+console.log(Object.is(obj4.name,obj5.name));//true
 
 
