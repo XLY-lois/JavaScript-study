@@ -28,3 +28,33 @@ console.log(setArr);//Set(3) {"水水", "hhhh", "loisssss"}
 setArr.clear();//全部清空
 console.log(setArr);//Set(0) {}
 ```
+```
+//输出方法
+let setArr1 = new Set(['lois','水水','hhhh']);
+//for of 
+for(let item of setArr1){
+    console.log(item);
+}
+/*
+水水
+hhhh
+lois
+*/
+//forEach
+setArr1.forEach(value => console.log(value));
+/*
+水水
+hhhh
+lois
+*/
+//size属性
+console.log(setArr1.size);//3
+
+
+//weakset 可以放对象
+let setArr2 = new WeakSet();
+let obj2 = {a:'lois',b:'水水'};
+let obj3 = {a:'lois',b:'水水'};//虽然值相同，但在内存中不是同一个引用，因此如果把该对象也加进去是可以的，不算重复噢
+setArr2.add(obj2);
+console.log(setArr2);
+```
